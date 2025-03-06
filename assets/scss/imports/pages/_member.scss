@@ -1,0 +1,496 @@
+/* -------------------------------------------------------------------------- */
+/*                                 detail page                                */
+/* -------------------------------------------------------------------------- */
+
+.memberpage {
+  .detail {
+    &_container {
+      padding: 210px 8.33vw 130px;
+
+      @include maxW(1023px) {
+        padding: 125px 22px 0;
+      }
+    }
+
+    &_profile {
+      &_inner {
+        margin-top: 65px;
+        display: grid;
+        grid-template-columns: 20.83vw 1fr;
+        gap: 110px;
+      }
+
+      &_left {
+        aspect-ratio: 1 / 1;
+
+        figure {
+          display: block;
+          z-index: 1;
+          position: relative;
+          height: 100%;
+          padding-bottom: 100%;
+          background-color: #a1a4ab;
+          border-radius: 50%;
+
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      &_author {
+        display: flex;
+        align-items: flex-end;
+        gap: min(1.74vw, 25px);
+
+        svg {
+          path {
+            fill: var(--black-cl);
+          }
+        }
+
+        .jpname {
+          display: flex;
+          gap: 12px;
+
+          p {
+            font-family: $noto-fonts;
+            font-size: min(3vw, 4.4rem);
+            font-weight: 700;
+            letter-spacing: 5.375px;
+          }
+        }
+
+        .enname {
+          span,
+          p {
+            font-size: min(1.25vw, 1.8rem);
+          }
+
+          span {
+            transform: translateY(-1px);
+            display: inline-block;
+            margin-right: 12px;
+          }
+
+          p {
+            display: inline-block;
+            font-weight: 700;
+            letter-spacing: 0.432px;
+            transform: translateY(2px);
+          }
+        }
+      }
+
+      &_content {
+        margin-top: 40px;
+
+        p {
+          font-size: 1.5rem;
+          font-weight: 700;
+          line-height: 1.8;
+        }
+
+        .jphistory {
+          p {
+            font-family: $noto-fonts;
+            letter-spacing: 1.5px;
+          }
+        }
+
+        .enhistory {
+          p {
+            letter-spacing: 0.48px;
+          }
+        }
+      }
+
+      @include maxW(1023px) {
+        &_inner {
+          margin-top: 40px;
+          display: block;
+        }
+
+        &_left {
+          max-width: 200px;
+        }
+
+        &_author {
+          margin-top: 40px;
+          gap: 14px;
+
+          .jpname {
+            gap: 7px;
+
+            p {
+              font-size: min(5.7vw, 2.592rem);
+              letter-spacing: 0.907px;
+            }
+          }
+
+          .enname {
+            span,
+            p {
+              font-size: min(3vw, 1.5rem);
+            }
+
+            span {
+              margin-right: 7px;
+              transform: translateY(0px);
+            }
+
+            p {
+              transform: translateY(0);
+            }
+          }
+        }
+
+        &_content {
+          margin-top: 30px;
+
+          p {
+            font-size: 1.2rem;
+          }
+
+          .jphistory p {
+            letter-spacing: 1.2px;
+          }
+
+          .enhistory p {
+            letter-spacing: 0.384px;
+          }
+        }
+      }
+    }
+
+    &_works {
+      margin-top: 190px;
+
+      &_content {
+        cursor: pointer;
+
+        p {
+          margin-top: 15px;
+          font-size: 1.35rem;
+          font-weight: 700;
+          letter-spacing: 0.432px;
+          line-height: 1.8;
+        }
+      }
+
+      &_list {
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      &_items {
+        height: fit-content;
+        display: none;
+
+        figure {
+          display: block;
+          z-index: 1;
+          position: relative;
+          height: 100%;
+          padding-bottom: calc(213.75 / 380 * 100%);
+          background-color: #a1a4ab;
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+          }
+        }
+
+        &:hover figure img {
+          transform: scale(1.08);
+        }
+      }
+
+      @include maxW(1023px) {
+        margin-top: 78px;
+
+        &_content {
+          p {
+            margin-top: 12px;
+            font-size: 1.2rem;
+            letter-spacing: 0.384px;
+            line-height: 1.75;
+          }
+        }
+
+        &_list {
+          margin-top: 40px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
+        }
+
+        &_items {
+          figure {
+            padding-bottom: calc(208.13 / 380 * 100%);
+          }
+        }
+      }
+
+      @include maxW(767px) {
+        &_list {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+    }
+
+    &_loading {
+      margin: 120px auto 0;
+      width: fit-content;
+      cursor: pointer;
+
+      svg {
+        line {
+          stroke: var(--black-cl);
+        }
+      }
+
+      @include maxW(1023px) {
+        margin-top: 40px;
+
+        svg {
+          width: 35px;
+          height: auto;
+        }
+      }
+    }
+
+    &_popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+      overflow: hidden;
+      display: none;
+
+      &_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      &_close {
+        position: absolute;
+        top: 44px;
+        right: 50px;
+        cursor: pointer;
+        z-index: 1;
+        width: 62.5px;
+        height: 62.5px;
+
+        span {
+          display: block;
+          height: 1px;
+          width: 56px;
+          position: absolute;
+          top: 50%;
+          right: 50%;
+          background-color: #fff;
+
+          &:nth-child(1) {
+            transform: translate(50%, -50%) rotate(-45deg);
+          }
+
+          &:nth-child(2) {
+            transform: translate(50%, -50%) rotate(45deg);
+          }
+        }
+      }
+
+      &_inner {
+        width: 66.666666666667%;
+        max-width: 960px;
+        height: max-content;
+        margin: auto;
+        max-height: 85%;
+        position: relative;
+      }
+
+      &_video {
+        position: relative;
+
+        iframe,
+        video {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 16 / 9;
+        }
+
+        p.title {
+          margin-bottom: 15px;
+          font-family: $noto-fonts;
+          font-size: 1.4rem;
+          font-weight: 700;
+          letter-spacing: 0.42px;
+          line-height: 1.87;
+          color: #fff;
+
+          &.hide {
+            display: none;
+          }
+        }
+      }
+
+      @include maxW(1023px) {
+        &_close {
+          width: 50px;
+          height: 50px;
+
+          top: 32px;
+          right: 22px;
+
+          span {
+            width: 42px;
+          }
+        }
+
+        &_inner {
+          width: 100%;
+          max-width: 100%;
+          padding: 0 22px;
+        }
+
+        &_video {
+          p.title {
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            letter-spacing: 0.39px;
+            line-height: 1.92;
+          }
+        }
+      }
+    }
+
+    &_pass {
+      &_form {
+        max-width: 333px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 12px;
+
+        label {
+          width: 100%;
+          display: block;
+          font-family: $noto-fonts;
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #fff;
+          letter-spacing: 0.42px;
+          line-height: 1.86;
+        }
+
+        input[type="password"] {
+          flex: 1;
+          padding: 0.5rem;
+          border: none;
+          border-bottom: 1px solid #fff;
+          background: none;
+          font-size: 1.4rem;
+          font-family: $main-fonts;
+          letter-spacing: 0.42px;
+          color: #fff;
+          outline: none;
+          border-radius: 0;
+          box-sizing: border-box;
+          -webkit-appearance: none;
+          -webkit-box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+          position: relative;
+          cursor: pointer;
+          width: 60px;
+          height: 40px;
+          border: 1px solid #fff;
+          color: #fff;
+          font-size: 1.4rem;
+          font-weight: 700;
+          font-family: $noto-fonts;
+          transition: all 0.5s ease;
+          background: none;
+          border-radius: 0;
+          -webkit-appearance: none;
+
+          &:hover {
+            background-color: #fff;
+            color: #000;
+          }
+        }
+      }
+
+      &_notes {
+        max-width: 478px;
+        margin: 100px auto 0;
+        font-family: $noto-fonts;
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.42px;
+        line-height: 1.86;
+        color: #fff;
+
+        a {
+          display: inline-block;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+      }
+
+      @include maxW(1023px) {
+        padding: 0 28px;
+
+        &_form {
+          max-width: 100%;
+          column-gap: 11.2px;
+
+          label {
+            font-size: 1.4rem;
+            letter-spacing: 0.42px;
+            line-height: 1.79;
+          }
+
+          input[type="password"] {
+            font-size: 1.3rem;
+            letter-spacing: 0.39px;
+          }
+
+          input[type="submit"] {
+            width: 56px;
+            height: 37px;
+            font-size: 1.3rem;
+          }
+        }
+
+        &_notes {
+          margin-top: 30px;
+          font-size: 1.3rem;
+          letter-spacing: 0.39px;
+          line-height: 1.85;
+        }
+      }
+    }
+  }
+}

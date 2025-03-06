@@ -1,0 +1,56 @@
+/* layout
+------------------------------------------------------------*/
+@-ms-viewport {
+  width: device-width;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  background-color: var(--main-bg-cl);
+  color: var(--main-text-cl);
+  font-family: $main-fonts;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1;
+  position: relative;
+  overflow-x: hidden;
+
+  // display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  display: none;
+
+  &.is-flex {
+    display: flex !important;
+  }
+
+  &.--no-scroll {
+    overflow: hidden !important;
+  }
+}
+
+//-------------------------------------------------------
+main {
+  flex: 1;
+}
+
+::selection {
+  background: #ededed;
+  color: #000;
+}
